@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  frontend:
+    image: lesearch-frontend # Use the prebuilt image
+    build: .
+    ports:
+      - "3001:3000" # Map port 3000 on the host to port 3000 in the container
+    volumes:
+      - .:/app # Mount your current directory to /app in the container
+      - /app/node_modules # Prevent overwriting node_modules
+    environment:
+      - NODE_ENV=development
+    stdin_open: true # This is equivalent to -i (interactive)
+    tty: true # This is equivalent to -t (allocate a pseudo-TTY)

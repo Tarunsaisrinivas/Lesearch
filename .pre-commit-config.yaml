@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.20.1
+    hooks:
+      - id: eslint # Ensure it runs on all JS/TS         files: ".*\\.(js|jsx|ts|tsx)$"
+        args: ["--fix"]
+        files: ".*\\.(js|jsx|ts|tsx)$"
+        additional_dependencies:
+          - eslint
+          - eslint-plugin-react
+          - eslint-config-next  # Ensure Next.js ESLint config is available
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8  # Latest stable version
+    hooks:
+      - id: prettier
+        files: ".*\\.(js|jsx|ts|tsx)$"  # Ensure Prettier runs on all JS/TS files
